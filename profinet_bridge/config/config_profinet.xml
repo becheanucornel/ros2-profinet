@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Maps ROS 2 topics to PROFINET modules. The modules and slots must be the same
+  as in the TIA Portal project. Slot 1 is always the Node status module.
+
+  IN modules carry data to the PLC, OUT modules carry data from the PLC.
+  Offsets are bytes from the start of the module.
+
+  vendor_id and device_id must be the same as in your copy of the GSDML file,
+  such as 0x1234. See gsdml/README.md.
+-->
+<profinet vendor_id="YOUR_VENDOR_ID" device_id="YOUR_DEVICE_ID"
+          station_name="ros2-robot" interface="eth1" cycle_ms="10">
+
+  <!-- Topic to PLC. Marked bad if no message arrives for timeout_ms
+       (use timeout_ms="none" for topics that are published only once). -->
+  <slot number="2" module="REAL_2_IN">
+    <map topic="/odom" type="nav_msgs/msg/Odometry" timeout_ms="200">
+      <field path="twist.twist.linear.x" offset="0"/>
+      <field path="twist.twist.angular.z" offset="4"/>
+    </map>
+  </slot>
+
+  <!-- BOOL modules also need the bit. -->
+  <slot number="3" module="BOOL_8_IN">
+    <map topic="/robot_ready" type="std_msgs/msg/Bool" timeout_ms="none" qos="latched">
+      <field path="data" offset="0" bit="0"/>
+    </map>
+  </slot>
+
+  <!-- PLC to topic. on_disconnect says what happens when the PLC is lost or in STOP,
+       or sends a value that the topic cannot hold: stop = publish nothing,
+       zero = publish zeros, hold = repeat the last values.
+       With rate_hz the topic is published continuously, without it on change. -->
+  <slot number="4" module="REAL_2_OUT">
+    <map topic="/cmd_vel" type="geometry_msgs/msg/Twist" rate_hz="20" on_disconnect="zero">
+      <field path="linear.x" offset="0"/>
+      <field path="angular.z" offset="4"/>
+    </map>
+  </slot>
+
+  <!-- RAW modules hold mixed types, so every field needs "as". This topic is published
+       on change, so it is latched for nodes that start later. -->
+  <slot number="5" module="RAW_8_OUT">
+    <map topic="/plc/job_number" type="std_msgs/msg/UInt16" on_disconnect="stop" qos="latched">
+      <field path="data" offset="0" as="U16"/>
+    </map>
+  </slot>
+
+</profinet>

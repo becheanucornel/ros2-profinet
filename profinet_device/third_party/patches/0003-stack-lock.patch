@@ -1,0 +1,124 @@
+diff --git a/src/device/pf_cmina.c b/src/device/pf_cmina.c
+index b287a4b..2b28032 100644
+--- a/src/device/pf_cmina.c
++++ b/src/device/pf_cmina.c
+@@ -90,12 +90,10 @@ void pf_cmina_save_ase (pnet_t * net, pf_cmina_dcp_ase_t * p_ase)
+    const char * p_file_directory = pf_cmina_get_file_directory (net);
+    int res = 0;
+ 
+-   /* This operation is called from the background worker.
+-    * Ase data is protected by a mutex.
+-    */
+-   os_mutex_lock (net->cmina_mutex);
++   /* This operation is called from the background worker. */
++   pnal_lock();
+    ase_nvm = *p_ase;
+-   os_mutex_unlock (net->cmina_mutex);
++   pnal_unlock();
+ 
+    pf_cmina_ip_to_string (ase_nvm.full_ip_suite.ip_suite.ip_addr, ip_string);
+    pf_cmina_ip_to_string (
+@@ -108,7 +106,7 @@ void pf_cmina_save_ase (pnet_t * net, pf_cmina_dcp_ase_t * p_ase)
+    res = pf_file_save_if_modified (
+       p_file_directory,
+       PF_FILENAME_IP,
+-      p_ase,
++      &ase_nvm,
+       &temporary_buffer,
+       sizeof (pf_cmina_dcp_ase_t));
+    switch (res)
+diff --git a/src/ports/linux/pnal.c b/src/ports/linux/pnal.c
+index e7d48c9..3e8f436 100644
+--- a/src/ports/linux/pnal.c
++++ b/src/ports/linux/pnal.c
+@@ -200,7 +200,7 @@ pnal_buf_t * pnal_buf_alloc (uint16_t length)
+                                                                   struct */
+       p->len = length;
+ #endif
+-      pnal_buf_alloc_cnt++;
++      (void)__atomic_add_fetch (&pnal_buf_alloc_cnt, 1, __ATOMIC_RELAXED);
+    }
+    else
+    {
+@@ -213,7 +213,7 @@ pnal_buf_t * pnal_buf_alloc (uint16_t length)
+ void pnal_buf_free (pnal_buf_t * p)
+ {
+    free (p);
+-   pnal_buf_alloc_cnt--;
++   (void)__atomic_sub_fetch (&pnal_buf_alloc_cnt, 1, __ATOMIC_RELAXED);
+    return;
+ }
+ 
+diff --git a/src/ports/linux/pnal_config.h b/src/ports/linux/pnal_config.h
+index 6b1be0b..786d044 100644
+--- a/src/ports/linux/pnal_config.h
++++ b/src/ports/linux/pnal_config.h
+@@ -47,6 +47,13 @@ typedef struct pnal_cfg
+    pnal_thread_cfg_t bg_worker_thread;
+ } pnal_cfg_t;
+ 
++/**
++ * Lock for the whole stack. Held while a received frame is handled. The
++ * application must hold it while it calls the stack from another thread.
++ */
++void pnal_lock (void);
++void pnal_unlock (void);
++
+ #ifdef __cplusplus
+ }
+ #endif
+diff --git a/src/ports/linux/pnal_eth.c b/src/ports/linux/pnal_eth.c
+index 832129b..023e44b 100644
+--- a/src/ports/linux/pnal_eth.c
++++ b/src/ports/linux/pnal_eth.c
+@@ -18,6 +18,9 @@
+  * @brief Linux Ethernet related functions that use \a pnal_eth_handle_t
+  */
+ 
++#define _GNU_SOURCE /* pthread_mutexattr_setprotocol */
++#include "pnal_config.h"
++#include <pthread.h>
+ #include "pnal.h"
+ 
+ #include "pnet_options.h"
+@@ -40,6 +43,30 @@ struct pnal_eth_handle
+    os_thread_t * thread;
+ };
+ 
++static pthread_mutex_t stack_mutex;
++static pthread_once_t stack_once = PTHREAD_ONCE_INIT;
++
++static void stack_mutex_init (void)
++{
++   pthread_mutexattr_t attr;
++
++   pthread_mutexattr_init (&attr);
++   pthread_mutexattr_settype (&attr, PTHREAD_MUTEX_RECURSIVE);
++   pthread_mutexattr_setprotocol (&attr, PTHREAD_PRIO_INHERIT);
++   pthread_mutex_init (&stack_mutex, &attr);
++}
++
++void pnal_lock (void)
++{
++   pthread_once (&stack_once, stack_mutex_init);
++   pthread_mutex_lock (&stack_mutex);
++}
++
++void pnal_unlock (void)
++{
++   pthread_mutex_unlock (&stack_mutex);
++}
++
+ /**
+  * @internal
+  * Run a thread that listens to incoming raw Ethernet sockets.
+@@ -68,7 +95,9 @@ static void os_eth_task (void * thread_arg)
+ 
+       if (eth_handle->callback != NULL)
+       {
++         pnal_lock();
+          handled = eth_handle->callback (eth_handle, eth_handle->arg, p);
++         pnal_unlock();
+       }
+       else
+       {

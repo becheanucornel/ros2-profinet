@@ -1,0 +1,15 @@
+# Build results
+build/
+install/
+log/
+__pycache__/
+
+# Downloaded by profinet_device/third_party/fetch.sh
+/profinet_device/third_party/p-net/
+/profinet_device/third_party/osal/
+
+# Kept local
+/system_tests/
+test/
+Dockerfile
+.dockerignore

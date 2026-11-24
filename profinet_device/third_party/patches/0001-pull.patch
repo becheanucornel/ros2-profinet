@@ -1,0 +1,16 @@
+diff --git a/src/common/pf_alarm.c b/src/common/pf_alarm.c
+index 649ced7..d7b26f4 100644
+--- a/src/common/pf_alarm.c
++++ b/src/common/pf_alarm.c
+@@ -3384,6 +3384,11 @@ int pf_alarm_send_pull (
+ {
+    uint16_t alarm_type = PF_ALARM_TYPE_PULL;
+ 
++   if (p_ar == NULL)
++   {
++      return 0; /* No connection, so nobody to tell */
++   }
++
+    LOG_INFO (
+       PF_ALARM_LOG,
+       "Alarm(%d): Sending pull alarm. Slot: %u  Subslot: 0x%04X\n",

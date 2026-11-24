@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- For completion and checks in editors. profinet_check also verifies offsets,
+     overlaps, and which attributes each kind of module needs. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="profinet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="slot" type="slot" maxOccurs="31"/>
+      </xs:sequence>
+      <xs:attribute name="vendor_id" type="id" use="required"/>
+      <xs:attribute name="device_id" type="id" use="required"/>
+      <xs:attribute name="station_name" type="xs:string" use="required"/>
+      <xs:attribute name="interface" type="xs:string" use="required"/>
+      <xs:attribute name="cycle_ms" type="range1to100" default="10"/>
+    </xs:complexType>
+    <xs:unique name="slot_number">
+      <xs:selector xpath="slot"/>
+      <xs:field xpath="@number"/>
+    </xs:unique>
+  </xs:element>
+
+  <xs:simpleType name="id">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="0x[0-9a-fA-F]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="slot">
+    <xs:sequence>
+      <xs:element name="map" type="map" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="number" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="2"/>
+          <xs:maxInclusive value="32"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="module" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="(BOOL_(8|16|32)|INT_[1248]|DINT_[1248]|REAL_([1248]|16)|RAW_(8|16|32|64))_(IN|OUT)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="map">
+    <xs:sequence>
+      <xs:element name="field" type="field" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="topic" type="xs:string" use="required"/>
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[a-zA-Z][a-zA-Z0-9_]*/msg/[a-zA-Z][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="qos">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="sensor"/>
+          <xs:enumeration value="default"/>
+          <xs:enumeration value="latched"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="timeout_ms">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="none|[1-9][0-9]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="on_disconnect">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="stop"/>
+          <xs:enumeration value="zero"/>
+          <xs:enumeration value="hold"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rate_hz" type="xs:decimal"/>
+  </xs:complexType>
+
+  <xs:complexType name="field">
+    <xs:attribute name="path" type="xs:string" use="required"/>
+    <xs:attribute name="offset" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="bit">
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0"/>
+          <xs:maxInclusive value="7"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="as">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="BOOL|[UI](8|16|32|64)|F(32|64)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="range1to100">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

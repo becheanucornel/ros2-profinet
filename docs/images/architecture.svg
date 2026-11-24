@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1290 540" role="img" aria-labelledby="t d">
+  <title id="t">Architecture of ros2-profinet</title>
+  <desc id="d">TIA Portal imports the GSDML file and downloads the project to the PLC. The PLC exchanges data over PROFINET with the service profinet_device on the Linux machine. The service exchanges data with the ROS 2 node profinet_bridge, which reads config_profinet.xml and connects the data to ROS 2 topics. Data flows in both directions.</desc>
+  <defs>
+    <marker id="in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2dd4bf"/></marker>
+    <marker id="out" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#fbbf24"/></marker>
+    <marker id="cfg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#94a3b8"/></marker>
+    <style>
+      text { font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #e2e8f0; }
+      .mono { font-family: Consolas, "SF Mono", Menlo, monospace; }
+      .zone { fill: #131d33; stroke: #2b3a59; stroke-width: 1.5; }
+      .zl { font-size: 16px; font-weight: 600; letter-spacing: 1.6px; fill: #94a3b8; }
+      .h { font-size: 23px; font-weight: 600; text-anchor: middle; }
+      .s { font-size: 18px; fill: #a9b6ca; text-anchor: middle; }
+      .l { font-size: 17.5px; fill: #a9b6ca; }
+      .c { text-anchor: middle; }
+      .box { fill: #1c2945; stroke-width: 1.75; }
+      .in { stroke: #2dd4bf; stroke-width: 2.5; fill: none; marker-end: url(#in); }
+      .out { stroke: #fbbf24; stroke-width: 2.5; fill: none; marker-end: url(#out); }
+      .cfg { stroke: #94a3b8; stroke-width: 2; stroke-dasharray: 6 5; fill: none; marker-end: url(#cfg); }
+    </style>
+  </defs>
+
+  <rect width="1290" height="540" rx="16" fill="#0c1424"/>
+
+  <rect class="zone" x="30" y="30" width="300" height="430" rx="12"/>
+  <text class="zl" x="52" y="62">AUTOMATION</text>
+  <rect class="zone" x="490" y="30" width="770" height="430" rx="12"/>
+  <text class="zl" x="512" y="62">LINUX MACHINE WITH ROS 2</text>
+
+  <!-- Engineering -->
+  <rect class="box" x="60" y="90" width="240" height="110" rx="10" stroke="#64748b"/>
+  <text class="h" x="180" y="139">TIA Portal</text>
+  <text class="s" x="180" y="167">imports the GSDML file</text>
+  <path class="cfg" d="M180 200V306"/>
+  <text class="l" x="194" y="258">project</text>
+
+  <!-- PLC -->
+  <rect class="box" x="60" y="310" width="240" height="110" rx="10" stroke="#60a5fa"/>
+  <text class="h" x="180" y="359">PLC</text>
+  <text class="s" x="180" y="387">PROFINET IO controller</text>
+
+  <!-- Service -->
+  <rect class="box" x="520" y="310" width="200" height="110" rx="10" stroke="#a78bfa"/>
+  <text class="h mono" x="620" y="359" style="font-size:21px">profinet_device</text>
+  <text class="s" x="620" y="387">real-time service</text>
+
+  <!-- Configuration -->
+  <rect class="box" x="762" y="90" width="256" height="110" rx="10" stroke="#64748b"/>
+  <text class="h mono" x="890" y="139" style="font-size:20px">config_profinet.xml</text>
+  <text class="s" x="890" y="167">maps topics to modules</text>
+  <path class="cfg" d="M890 200V306"/>
+  <text class="l" x="904" y="258">read at start</text>
+
+  <!-- Node -->
+  <rect class="box" x="790" y="310" width="200" height="110" rx="10" stroke="#a78bfa"/>
+  <text class="h mono" x="890" y="359" style="font-size:21px">profinet_bridge</text>
+  <text class="s" x="890" y="387">ROS 2 node</text>
+
+  <!-- Topics -->
+  <rect class="box" x="1060" y="290" width="170" height="150" rx="10" stroke="#60a5fa"/>
+  <text class="h" x="1145" y="322" style="font-size:21px">Topics</text>
+  <g style="font-size:17px">
+    <rect x="1078" y="336" width="134" height="26" rx="13" fill="#0f2f36"/>
+    <text class="mono c" x="1145" y="355" style="fill:#5eead4">/odom</text>
+    <rect x="1078" y="368" width="134" height="26" rx="13" fill="#3a2c0c"/>
+    <text class="mono c" x="1145" y="387" style="fill:#fcd34d">/cmd_vel</text>
+    <text class="c" x="1145" y="420" style="fill:#a9b6ca">…</text>
+  </g>
+
+  <!-- Data -->
+  <text class="c" x="410" y="334" style="font-size:20px;font-weight:600">PROFINET</text>
+  <path class="in" d="M516 354H304"/>
+  <path class="out" d="M304 378H516"/>
+  <text class="l c" x="755" y="334">socket</text>
+  <path class="in" d="M786 354H724"/>
+  <path class="out" d="M724 378H786"/>
+  <path class="in" d="M1056 354H994"/>
+  <path class="out" d="M994 378H1056"/>
+
+  <!-- Legend -->
+  <g transform="translate(0 500)">
+    <path class="in" d="M320 0H370"/>
+    <text class="l" x="382" y="6">ROS 2 to PLC (IN modules)</text>
+    <path class="out" d="M680 0H730"/>
+    <text class="l" x="742" y="6">PLC to ROS 2 (OUT modules)</text>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+diff --git a/src/ports/linux/pnal.c b/src/ports/linux/pnal.c
+index e7d48c9..6035e16 100644
+--- a/src/ports/linux/pnal.c
++++ b/src/ports/linux/pnal.c
+@@ -289,6 +289,11 @@ static pnal_eth_mau_t calculate_mau_type (
+    {
+       if (duplex == DUPLEX_FULL)
+       {
++         /* Faster links are not known here, but they are fast enough. */
++         if (speed > SPEED_1000 && speed != (uint32_t)SPEED_UNKNOWN)
++         {
++            speed = SPEED_1000;
++         }
+          switch (speed)
+          {
+          case SPEED_10:

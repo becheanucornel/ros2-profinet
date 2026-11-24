@@ -1,0 +1,1324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ROS 2 PROFINET device.
+
+  Before importing a copy of this file, replace the placeholders YOUR_... in it with
+  the values of your organisation. See README.md. The same IDs go into
+  config_profinet.xml.
+
+  Never change the ident number or data of a released module. Add new modules
+  instead, and give the file a new date.
+-->
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\xsd\GSDML-DeviceProfile-V2.4.xsd">
+  <ProfileHeader>
+    <ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+    <ProfileRevision>1.00</ProfileRevision>
+    <ProfileName>Device Profile for PROFINET Devices</ProfileName>
+    <ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+    <ProfileClassID>Device</ProfileClassID>
+    <ISO15745Reference>
+      <ISO15745Part>4</ISO15745Part>
+      <ISO15745Edition>1</ISO15745Edition>
+      <ProfileTechnology>GSDML</ProfileTechnology>
+    </ISO15745Reference>
+  </ProfileHeader>
+  <ProfileBody>
+    <DeviceIdentity VendorID="YOUR_VENDOR_ID" DeviceID="YOUR_DEVICE_ID">
+      <InfoText TextId="T_DEVICE"/>
+      <VendorName Value="YOUR_ORGANISATION"/>
+    </DeviceIdentity>
+    <DeviceFunction>
+      <Family MainFamily="I/O" ProductFamily="ROS 2"/>
+    </DeviceFunction>
+    <ApplicationProcess>
+      <DeviceAccessPointList>
+        <DeviceAccessPointItem ID="DAP_1" PNIO_Version="V2.4" PhysicalSlots="0..32" ModuleIdentNumber="0x00000001" MinDeviceInterval="32" DNS_CompatibleName="ros2-device" FixedInSlots="0" ObjectUUID_LocalIndex="1" DeviceAccessSupported="false" MultipleWriteSupported="true" CheckDeviceID_Allowed="true" NameOfStationNotTransferable="false" LLDP_NoD_Supported="true" ResetToFactoryModes="1..2">
+          <ModuleInfo>
+            <Name TextId="T_DAP"/>
+            <InfoText TextId="T_DAP_INFO"/>
+            <VendorName Value="YOUR_ORGANISATION"/>
+            <OrderNumber Value="ROS2PN-1"/>
+            <HardwareRelease Value="1"/>
+            <SoftwareRelease Value="V0.1.0"/>
+          </ModuleInfo>
+          <CertificationInfo ConformanceClass="A" ApplicationClass="" NetloadClass="I"/>
+          <IOConfigData MaxInputLength="1440" MaxOutputLength="1440"/>
+          <UseableModules>
+            <ModuleItemRef ModuleItemTarget="M_NODE_STATUS_IN" AllowedInSlots="1" FixedInSlots="1"/>
+            <ModuleItemRef ModuleItemTarget="M_BOOL_8_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_BOOL_16_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_BOOL_32_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_INT_1_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_INT_2_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_INT_4_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_INT_8_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_DINT_1_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_DINT_2_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_DINT_4_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_DINT_8_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_1_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_2_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_4_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_8_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_16_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_RAW_8_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_RAW_16_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_RAW_32_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_RAW_64_IN" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_BOOL_8_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_BOOL_16_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_BOOL_32_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_INT_1_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_INT_2_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_INT_4_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_INT_8_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_DINT_1_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_DINT_2_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_DINT_4_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_DINT_8_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_1_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_2_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_4_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_8_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_REAL_16_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_RAW_8_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_RAW_16_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_RAW_32_OUT" AllowedInSlots="2..32"/>
+            <ModuleItemRef ModuleItemTarget="M_RAW_64_OUT" AllowedInSlots="2..32"/>
+          </UseableModules>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="DAP_S1" SubmoduleIdentNumber="0x00000001" Writeable_IM_Records="1 2 3" MayIssueProcessAlarm="false">
+              <IOData/>
+              <ModuleInfo>
+                <Name TextId="T_DAP"/>
+                <InfoText TextId="T_DAP_INFO"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+          <SystemDefinedSubmoduleList>
+            <InterfaceSubmoduleItem ID="DAP_IF" SubmoduleIdentNumber="0x00008000" SubslotNumber="32768" TextId="T_IF" SupportedRT_Classes="RT_CLASS_1" SupportedProtocols="LLDP" NetworkComponentDiagnosisSupported="false" PTP_BoundarySupported="true" DCP_BoundarySupported="true">
+              <ApplicationRelations StartupMode="Advanced">
+                <TimingProperties SendClock="32" ReductionRatio="1 2 4 8 16 32 64 128 256 512"/>
+              </ApplicationRelations>
+            </InterfaceSubmoduleItem>
+            <PortSubmoduleItem ID="DAP_P1" SubmoduleIdentNumber="0x00008001" SubslotNumber="32769" TextId="T_PORT" MaxPortRxDelay="350" MaxPortTxDelay="160">
+              <MAUTypeList>
+                <MAUTypeItem Value="30"/>
+                <MAUTypeItem Value="16"/>
+              </MAUTypeList>
+            </PortSubmoduleItem>
+          </SystemDefinedSubmoduleList>
+        </DeviceAccessPointItem>
+      </DeviceAccessPointList>
+      <ModuleList>
+        <ModuleItem ID="M_NODE_STATUS_IN" ModuleIdentNumber="0x00001001">
+          <ModuleInfo CategoryRef="CAT_STATUS">
+            <Name TextId="TN_NODE_STATUS_IN"/>
+            <InfoText TextId="TI_NODE_STATUS_IN"/>
+            <OrderNumber Value="NODE_STATUS_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_NODE_STATUS_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned32" TextId="T_MAPID"/>
+                  <DataItem DataType="Unsigned16" TextId="T_STATE"/>
+                  <DataItem DataType="Unsigned16" TextId="T_HEART"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_NODE_STATUS_IN"/>
+                <InfoText TextId="TI_NODE_STATUS_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_BOOL_8_IN" ModuleIdentNumber="0x00001108">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_BOOL_8_IN"/>
+            <InfoText TextId="TI_BOOL_8_IN"/>
+            <OrderNumber Value="BOOL_8_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_BOOL_8_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_0">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_0_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_0_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_0_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_0_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_0_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_0_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_0_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_0_7"/>
+                  </DataItem>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_BOOL_8_IN"/>
+                <InfoText TextId="TI_BOOL_8_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_BOOL_16_IN" ModuleIdentNumber="0x00001110">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_BOOL_16_IN"/>
+            <InfoText TextId="TI_BOOL_16_IN"/>
+            <OrderNumber Value="BOOL_16_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_BOOL_16_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_0">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_0_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_0_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_0_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_0_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_0_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_0_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_0_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_0_7"/>
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_1">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_1_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_1_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_1_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_1_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_1_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_1_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_1_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_1_7"/>
+                  </DataItem>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_BOOL_16_IN"/>
+                <InfoText TextId="TI_BOOL_16_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_BOOL_32_IN" ModuleIdentNumber="0x00001120">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_BOOL_32_IN"/>
+            <InfoText TextId="TI_BOOL_32_IN"/>
+            <OrderNumber Value="BOOL_32_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_BOOL_32_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_0">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_0_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_0_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_0_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_0_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_0_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_0_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_0_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_0_7"/>
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_1">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_1_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_1_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_1_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_1_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_1_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_1_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_1_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_1_7"/>
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_2">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_2_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_2_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_2_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_2_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_2_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_2_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_2_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_2_7"/>
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_3">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_3_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_3_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_3_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_3_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_3_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_3_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_3_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_3_7"/>
+                  </DataItem>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_BOOL_32_IN"/>
+                <InfoText TextId="TI_BOOL_32_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_INT_1_IN" ModuleIdentNumber="0x00001201">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_INT_1_IN"/>
+            <InfoText TextId="TI_INT_1_IN"/>
+            <OrderNumber Value="INT_1_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_INT_1_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Integer16" TextId="T_VALUE_1"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_INT_1_IN"/>
+                <InfoText TextId="TI_INT_1_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_INT_2_IN" ModuleIdentNumber="0x00001202">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_INT_2_IN"/>
+            <InfoText TextId="TI_INT_2_IN"/>
+            <OrderNumber Value="INT_2_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_INT_2_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Integer16" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_2"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_INT_2_IN"/>
+                <InfoText TextId="TI_INT_2_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_INT_4_IN" ModuleIdentNumber="0x00001204">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_INT_4_IN"/>
+            <InfoText TextId="TI_INT_4_IN"/>
+            <OrderNumber Value="INT_4_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_INT_4_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Integer16" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_4"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_INT_4_IN"/>
+                <InfoText TextId="TI_INT_4_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_INT_8_IN" ModuleIdentNumber="0x00001208">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_INT_8_IN"/>
+            <InfoText TextId="TI_INT_8_IN"/>
+            <OrderNumber Value="INT_8_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_INT_8_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Integer16" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_4"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_5"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_6"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_7"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_8"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_INT_8_IN"/>
+                <InfoText TextId="TI_INT_8_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_DINT_1_IN" ModuleIdentNumber="0x00001301">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_DINT_1_IN"/>
+            <InfoText TextId="TI_DINT_1_IN"/>
+            <OrderNumber Value="DINT_1_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_DINT_1_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Integer32" TextId="T_VALUE_1"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_DINT_1_IN"/>
+                <InfoText TextId="TI_DINT_1_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_DINT_2_IN" ModuleIdentNumber="0x00001302">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_DINT_2_IN"/>
+            <InfoText TextId="TI_DINT_2_IN"/>
+            <OrderNumber Value="DINT_2_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_DINT_2_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Integer32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_2"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_DINT_2_IN"/>
+                <InfoText TextId="TI_DINT_2_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_DINT_4_IN" ModuleIdentNumber="0x00001304">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_DINT_4_IN"/>
+            <InfoText TextId="TI_DINT_4_IN"/>
+            <OrderNumber Value="DINT_4_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_DINT_4_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Integer32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_4"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_DINT_4_IN"/>
+                <InfoText TextId="TI_DINT_4_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_DINT_8_IN" ModuleIdentNumber="0x00001308">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_DINT_8_IN"/>
+            <InfoText TextId="TI_DINT_8_IN"/>
+            <OrderNumber Value="DINT_8_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_DINT_8_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Integer32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_4"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_5"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_6"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_7"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_8"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_DINT_8_IN"/>
+                <InfoText TextId="TI_DINT_8_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_1_IN" ModuleIdentNumber="0x00001401">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_REAL_1_IN"/>
+            <InfoText TextId="TI_REAL_1_IN"/>
+            <OrderNumber Value="REAL_1_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_1_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_1_IN"/>
+                <InfoText TextId="TI_REAL_1_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_2_IN" ModuleIdentNumber="0x00001402">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_REAL_2_IN"/>
+            <InfoText TextId="TI_REAL_2_IN"/>
+            <OrderNumber Value="REAL_2_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_2_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_2"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_2_IN"/>
+                <InfoText TextId="TI_REAL_2_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_4_IN" ModuleIdentNumber="0x00001404">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_REAL_4_IN"/>
+            <InfoText TextId="TI_REAL_4_IN"/>
+            <OrderNumber Value="REAL_4_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_4_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_4"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_4_IN"/>
+                <InfoText TextId="TI_REAL_4_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_8_IN" ModuleIdentNumber="0x00001408">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_REAL_8_IN"/>
+            <InfoText TextId="TI_REAL_8_IN"/>
+            <OrderNumber Value="REAL_8_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_8_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_4"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_5"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_6"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_7"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_8"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_8_IN"/>
+                <InfoText TextId="TI_REAL_8_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_16_IN" ModuleIdentNumber="0x00001410">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_REAL_16_IN"/>
+            <InfoText TextId="TI_REAL_16_IN"/>
+            <OrderNumber Value="REAL_16_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_16_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_4"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_5"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_6"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_7"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_8"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_9"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_10"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_11"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_12"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_13"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_14"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_15"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_16"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_16_IN"/>
+                <InfoText TextId="TI_REAL_16_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_RAW_8_IN" ModuleIdentNumber="0x00001508">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_RAW_8_IN"/>
+            <InfoText TextId="TI_RAW_8_IN"/>
+            <OrderNumber Value="RAW_8_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_RAW_8_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="OctetString" Length="8" TextId="T_RAW"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_RAW_8_IN"/>
+                <InfoText TextId="TI_RAW_8_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_RAW_16_IN" ModuleIdentNumber="0x00001510">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_RAW_16_IN"/>
+            <InfoText TextId="TI_RAW_16_IN"/>
+            <OrderNumber Value="RAW_16_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_RAW_16_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="OctetString" Length="16" TextId="T_RAW"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_RAW_16_IN"/>
+                <InfoText TextId="TI_RAW_16_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_RAW_32_IN" ModuleIdentNumber="0x00001520">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_RAW_32_IN"/>
+            <InfoText TextId="TI_RAW_32_IN"/>
+            <OrderNumber Value="RAW_32_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_RAW_32_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="OctetString" Length="32" TextId="T_RAW"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_RAW_32_IN"/>
+                <InfoText TextId="TI_RAW_32_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_RAW_64_IN" ModuleIdentNumber="0x00001540">
+          <ModuleInfo CategoryRef="CAT_IN">
+            <Name TextId="TN_RAW_64_IN"/>
+            <InfoText TextId="TI_RAW_64_IN"/>
+            <OrderNumber Value="RAW_64_IN"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_RAW_64_IN" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="OctetString" Length="64" TextId="T_RAW"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_RAW_64_IN"/>
+                <InfoText TextId="TI_RAW_64_IN"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_BOOL_8_OUT" ModuleIdentNumber="0x00002108">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_BOOL_8_OUT"/>
+            <InfoText TextId="TI_BOOL_8_OUT"/>
+            <OrderNumber Value="BOOL_8_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_BOOL_8_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_0">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_0_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_0_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_0_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_0_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_0_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_0_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_0_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_0_7"/>
+                  </DataItem>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_BOOL_8_OUT"/>
+                <InfoText TextId="TI_BOOL_8_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_BOOL_16_OUT" ModuleIdentNumber="0x00002110">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_BOOL_16_OUT"/>
+            <InfoText TextId="TI_BOOL_16_OUT"/>
+            <OrderNumber Value="BOOL_16_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_BOOL_16_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_0">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_0_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_0_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_0_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_0_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_0_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_0_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_0_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_0_7"/>
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_1">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_1_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_1_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_1_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_1_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_1_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_1_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_1_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_1_7"/>
+                  </DataItem>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_BOOL_16_OUT"/>
+                <InfoText TextId="TI_BOOL_16_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_BOOL_32_OUT" ModuleIdentNumber="0x00002120">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_BOOL_32_OUT"/>
+            <InfoText TextId="TI_BOOL_32_OUT"/>
+            <OrderNumber Value="BOOL_32_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_BOOL_32_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_0">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_0_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_0_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_0_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_0_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_0_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_0_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_0_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_0_7"/>
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_1">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_1_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_1_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_1_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_1_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_1_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_1_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_1_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_1_7"/>
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_2">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_2_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_2_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_2_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_2_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_2_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_2_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_2_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_2_7"/>
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="T_BYTE_3">
+                    <BitDataItem BitOffset="0" TextId="T_BIT_3_0"/>
+                    <BitDataItem BitOffset="1" TextId="T_BIT_3_1"/>
+                    <BitDataItem BitOffset="2" TextId="T_BIT_3_2"/>
+                    <BitDataItem BitOffset="3" TextId="T_BIT_3_3"/>
+                    <BitDataItem BitOffset="4" TextId="T_BIT_3_4"/>
+                    <BitDataItem BitOffset="5" TextId="T_BIT_3_5"/>
+                    <BitDataItem BitOffset="6" TextId="T_BIT_3_6"/>
+                    <BitDataItem BitOffset="7" TextId="T_BIT_3_7"/>
+                  </DataItem>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_BOOL_32_OUT"/>
+                <InfoText TextId="TI_BOOL_32_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_INT_1_OUT" ModuleIdentNumber="0x00002201">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_INT_1_OUT"/>
+            <InfoText TextId="TI_INT_1_OUT"/>
+            <OrderNumber Value="INT_1_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_INT_1_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Integer16" TextId="T_VALUE_1"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_INT_1_OUT"/>
+                <InfoText TextId="TI_INT_1_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_INT_2_OUT" ModuleIdentNumber="0x00002202">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_INT_2_OUT"/>
+            <InfoText TextId="TI_INT_2_OUT"/>
+            <OrderNumber Value="INT_2_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_INT_2_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Integer16" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_2"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_INT_2_OUT"/>
+                <InfoText TextId="TI_INT_2_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_INT_4_OUT" ModuleIdentNumber="0x00002204">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_INT_4_OUT"/>
+            <InfoText TextId="TI_INT_4_OUT"/>
+            <OrderNumber Value="INT_4_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_INT_4_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Integer16" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_4"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_INT_4_OUT"/>
+                <InfoText TextId="TI_INT_4_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_INT_8_OUT" ModuleIdentNumber="0x00002208">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_INT_8_OUT"/>
+            <InfoText TextId="TI_INT_8_OUT"/>
+            <OrderNumber Value="INT_8_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_INT_8_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Integer16" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_4"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_5"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_6"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_7"/>
+                  <DataItem DataType="Integer16" TextId="T_VALUE_8"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_INT_8_OUT"/>
+                <InfoText TextId="TI_INT_8_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_DINT_1_OUT" ModuleIdentNumber="0x00002301">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_DINT_1_OUT"/>
+            <InfoText TextId="TI_DINT_1_OUT"/>
+            <OrderNumber Value="DINT_1_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_DINT_1_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Integer32" TextId="T_VALUE_1"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_DINT_1_OUT"/>
+                <InfoText TextId="TI_DINT_1_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_DINT_2_OUT" ModuleIdentNumber="0x00002302">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_DINT_2_OUT"/>
+            <InfoText TextId="TI_DINT_2_OUT"/>
+            <OrderNumber Value="DINT_2_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_DINT_2_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Integer32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_2"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_DINT_2_OUT"/>
+                <InfoText TextId="TI_DINT_2_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_DINT_4_OUT" ModuleIdentNumber="0x00002304">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_DINT_4_OUT"/>
+            <InfoText TextId="TI_DINT_4_OUT"/>
+            <OrderNumber Value="DINT_4_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_DINT_4_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Integer32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_4"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_DINT_4_OUT"/>
+                <InfoText TextId="TI_DINT_4_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_DINT_8_OUT" ModuleIdentNumber="0x00002308">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_DINT_8_OUT"/>
+            <InfoText TextId="TI_DINT_8_OUT"/>
+            <OrderNumber Value="DINT_8_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_DINT_8_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Integer32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_4"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_5"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_6"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_7"/>
+                  <DataItem DataType="Integer32" TextId="T_VALUE_8"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_DINT_8_OUT"/>
+                <InfoText TextId="TI_DINT_8_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_1_OUT" ModuleIdentNumber="0x00002401">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_REAL_1_OUT"/>
+            <InfoText TextId="TI_REAL_1_OUT"/>
+            <OrderNumber Value="REAL_1_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_1_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_1_OUT"/>
+                <InfoText TextId="TI_REAL_1_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_2_OUT" ModuleIdentNumber="0x00002402">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_REAL_2_OUT"/>
+            <InfoText TextId="TI_REAL_2_OUT"/>
+            <OrderNumber Value="REAL_2_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_2_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_2"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_2_OUT"/>
+                <InfoText TextId="TI_REAL_2_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_4_OUT" ModuleIdentNumber="0x00002404">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_REAL_4_OUT"/>
+            <InfoText TextId="TI_REAL_4_OUT"/>
+            <OrderNumber Value="REAL_4_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_4_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_4"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_4_OUT"/>
+                <InfoText TextId="TI_REAL_4_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_8_OUT" ModuleIdentNumber="0x00002408">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_REAL_8_OUT"/>
+            <InfoText TextId="TI_REAL_8_OUT"/>
+            <OrderNumber Value="REAL_8_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_8_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_4"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_5"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_6"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_7"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_8"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_8_OUT"/>
+                <InfoText TextId="TI_REAL_8_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_REAL_16_OUT" ModuleIdentNumber="0x00002410">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_REAL_16_OUT"/>
+            <InfoText TextId="TI_REAL_16_OUT"/>
+            <OrderNumber Value="REAL_16_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_REAL_16_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Float32" TextId="T_VALUE_1"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_2"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_3"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_4"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_5"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_6"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_7"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_8"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_9"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_10"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_11"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_12"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_13"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_14"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_15"/>
+                  <DataItem DataType="Float32" TextId="T_VALUE_16"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_REAL_16_OUT"/>
+                <InfoText TextId="TI_REAL_16_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_RAW_8_OUT" ModuleIdentNumber="0x00002508">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_RAW_8_OUT"/>
+            <InfoText TextId="TI_RAW_8_OUT"/>
+            <OrderNumber Value="RAW_8_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_RAW_8_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="OctetString" Length="8" TextId="T_RAW"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_RAW_8_OUT"/>
+                <InfoText TextId="TI_RAW_8_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_RAW_16_OUT" ModuleIdentNumber="0x00002510">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_RAW_16_OUT"/>
+            <InfoText TextId="TI_RAW_16_OUT"/>
+            <OrderNumber Value="RAW_16_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_RAW_16_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="OctetString" Length="16" TextId="T_RAW"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_RAW_16_OUT"/>
+                <InfoText TextId="TI_RAW_16_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_RAW_32_OUT" ModuleIdentNumber="0x00002520">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_RAW_32_OUT"/>
+            <InfoText TextId="TI_RAW_32_OUT"/>
+            <OrderNumber Value="RAW_32_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_RAW_32_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="OctetString" Length="32" TextId="T_RAW"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_RAW_32_OUT"/>
+                <InfoText TextId="TI_RAW_32_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="M_RAW_64_OUT" ModuleIdentNumber="0x00002540">
+          <ModuleInfo CategoryRef="CAT_OUT">
+            <Name TextId="TN_RAW_64_OUT"/>
+            <InfoText TextId="TI_RAW_64_OUT"/>
+            <OrderNumber Value="RAW_64_OUT"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="S_RAW_64_OUT" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+              <IOData>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="OctetString" Length="64" TextId="T_RAW"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="TN_RAW_64_OUT"/>
+                <InfoText TextId="TI_RAW_64_OUT"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+      </ModuleList>
+      <CategoryList>
+        <CategoryItem ID="CAT_STATUS" TextId="T_CAT_STATUS"/>
+        <CategoryItem ID="CAT_IN" TextId="T_CAT_IN"/>
+        <CategoryItem ID="CAT_OUT" TextId="T_CAT_OUT"/>
+      </CategoryList>
+      <ExternalTextList>
+        <PrimaryLanguage>
+          <Text TextId="TN_NODE_STATUS_IN" Value="Node status"/>
+          <Text TextId="TI_NODE_STATUS_IN" Value="8 bytes to the PLC: mapping ID, state word and heartbeat of the ROS 2 node"/>
+          <Text TextId="T_MAPID" Value="Mapping ID"/>
+          <Text TextId="T_STATE" Value="State word"/>
+          <Text TextId="T_HEART" Value="Heartbeat counter"/>
+          <Text TextId="TN_BOOL_8_IN" Value="8 BOOL IN"/>
+          <Text TextId="TI_BOOL_8_IN" Value="8 x BOOL, ROS 2 to PLC"/>
+          <Text TextId="T_BYTE_0" Value="Byte 0"/>
+          <Text TextId="T_BIT_0_0" Value="Bit 0.0"/>
+          <Text TextId="T_BIT_0_1" Value="Bit 0.1"/>
+          <Text TextId="T_BIT_0_2" Value="Bit 0.2"/>
+          <Text TextId="T_BIT_0_3" Value="Bit 0.3"/>
+          <Text TextId="T_BIT_0_4" Value="Bit 0.4"/>
+          <Text TextId="T_BIT_0_5" Value="Bit 0.5"/>
+          <Text TextId="T_BIT_0_6" Value="Bit 0.6"/>
+          <Text TextId="T_BIT_0_7" Value="Bit 0.7"/>
+          <Text TextId="TN_BOOL_16_IN" Value="16 BOOL IN"/>
+          <Text TextId="TI_BOOL_16_IN" Value="16 x BOOL, ROS 2 to PLC"/>
+          <Text TextId="T_BYTE_1" Value="Byte 1"/>
+          <Text TextId="T_BIT_1_0" Value="Bit 1.0"/>
+          <Text TextId="T_BIT_1_1" Value="Bit 1.1"/>
+          <Text TextId="T_BIT_1_2" Value="Bit 1.2"/>
+          <Text TextId="T_BIT_1_3" Value="Bit 1.3"/>
+          <Text TextId="T_BIT_1_4" Value="Bit 1.4"/>
+          <Text TextId="T_BIT_1_5" Value="Bit 1.5"/>
+          <Text TextId="T_BIT_1_6" Value="Bit 1.6"/>
+          <Text TextId="T_BIT_1_7" Value="Bit 1.7"/>
+          <Text TextId="TN_BOOL_32_IN" Value="32 BOOL IN"/>
+          <Text TextId="TI_BOOL_32_IN" Value="32 x BOOL, ROS 2 to PLC"/>
+          <Text TextId="T_BYTE_2" Value="Byte 2"/>
+          <Text TextId="T_BIT_2_0" Value="Bit 2.0"/>
+          <Text TextId="T_BIT_2_1" Value="Bit 2.1"/>
+          <Text TextId="T_BIT_2_2" Value="Bit 2.2"/>
+          <Text TextId="T_BIT_2_3" Value="Bit 2.3"/>
+          <Text TextId="T_BIT_2_4" Value="Bit 2.4"/>
+          <Text TextId="T_BIT_2_5" Value="Bit 2.5"/>
+          <Text TextId="T_BIT_2_6" Value="Bit 2.6"/>
+          <Text TextId="T_BIT_2_7" Value="Bit 2.7"/>
+          <Text TextId="T_BYTE_3" Value="Byte 3"/>
+          <Text TextId="T_BIT_3_0" Value="Bit 3.0"/>
+          <Text TextId="T_BIT_3_1" Value="Bit 3.1"/>
+          <Text TextId="T_BIT_3_2" Value="Bit 3.2"/>
+          <Text TextId="T_BIT_3_3" Value="Bit 3.3"/>
+          <Text TextId="T_BIT_3_4" Value="Bit 3.4"/>
+          <Text TextId="T_BIT_3_5" Value="Bit 3.5"/>
+          <Text TextId="T_BIT_3_6" Value="Bit 3.6"/>
+          <Text TextId="T_BIT_3_7" Value="Bit 3.7"/>
+          <Text TextId="TN_INT_1_IN" Value="1 INT IN"/>
+          <Text TextId="TI_INT_1_IN" Value="1 x INT, ROS 2 to PLC"/>
+          <Text TextId="T_VALUE_1" Value="Value 1"/>
+          <Text TextId="TN_INT_2_IN" Value="2 INT IN"/>
+          <Text TextId="TI_INT_2_IN" Value="2 x INT, ROS 2 to PLC"/>
+          <Text TextId="T_VALUE_2" Value="Value 2"/>
+          <Text TextId="TN_INT_4_IN" Value="4 INT IN"/>
+          <Text TextId="TI_INT_4_IN" Value="4 x INT, ROS 2 to PLC"/>
+          <Text TextId="T_VALUE_3" Value="Value 3"/>
+          <Text TextId="T_VALUE_4" Value="Value 4"/>
+          <Text TextId="TN_INT_8_IN" Value="8 INT IN"/>
+          <Text TextId="TI_INT_8_IN" Value="8 x INT, ROS 2 to PLC"/>
+          <Text TextId="T_VALUE_5" Value="Value 5"/>
+          <Text TextId="T_VALUE_6" Value="Value 6"/>
+          <Text TextId="T_VALUE_7" Value="Value 7"/>
+          <Text TextId="T_VALUE_8" Value="Value 8"/>
+          <Text TextId="TN_DINT_1_IN" Value="1 DINT IN"/>
+          <Text TextId="TI_DINT_1_IN" Value="1 x DINT, ROS 2 to PLC"/>
+          <Text TextId="TN_DINT_2_IN" Value="2 DINT IN"/>
+          <Text TextId="TI_DINT_2_IN" Value="2 x DINT, ROS 2 to PLC"/>
+          <Text TextId="TN_DINT_4_IN" Value="4 DINT IN"/>
+          <Text TextId="TI_DINT_4_IN" Value="4 x DINT, ROS 2 to PLC"/>
+          <Text TextId="TN_DINT_8_IN" Value="8 DINT IN"/>
+          <Text TextId="TI_DINT_8_IN" Value="8 x DINT, ROS 2 to PLC"/>
+          <Text TextId="TN_REAL_1_IN" Value="1 REAL IN"/>
+          <Text TextId="TI_REAL_1_IN" Value="1 x REAL, ROS 2 to PLC"/>
+          <Text TextId="TN_REAL_2_IN" Value="2 REAL IN"/>
+          <Text TextId="TI_REAL_2_IN" Value="2 x REAL, ROS 2 to PLC"/>
+          <Text TextId="TN_REAL_4_IN" Value="4 REAL IN"/>
+          <Text TextId="TI_REAL_4_IN" Value="4 x REAL, ROS 2 to PLC"/>
+          <Text TextId="TN_REAL_8_IN" Value="8 REAL IN"/>
+          <Text TextId="TI_REAL_8_IN" Value="8 x REAL, ROS 2 to PLC"/>
+          <Text TextId="TN_REAL_16_IN" Value="16 REAL IN"/>
+          <Text TextId="TI_REAL_16_IN" Value="16 x REAL, ROS 2 to PLC"/>
+          <Text TextId="T_VALUE_9" Value="Value 9"/>
+          <Text TextId="T_VALUE_10" Value="Value 10"/>
+          <Text TextId="T_VALUE_11" Value="Value 11"/>
+          <Text TextId="T_VALUE_12" Value="Value 12"/>
+          <Text TextId="T_VALUE_13" Value="Value 13"/>
+          <Text TextId="T_VALUE_14" Value="Value 14"/>
+          <Text TextId="T_VALUE_15" Value="Value 15"/>
+          <Text TextId="T_VALUE_16" Value="Value 16"/>
+          <Text TextId="TN_RAW_8_IN" Value="8 bytes IN"/>
+          <Text TextId="TI_RAW_8_IN" Value="8 x raw byte, ROS 2 to PLC"/>
+          <Text TextId="T_RAW" Value="Raw bytes"/>
+          <Text TextId="TN_RAW_16_IN" Value="16 bytes IN"/>
+          <Text TextId="TI_RAW_16_IN" Value="16 x raw byte, ROS 2 to PLC"/>
+          <Text TextId="TN_RAW_32_IN" Value="32 bytes IN"/>
+          <Text TextId="TI_RAW_32_IN" Value="32 x raw byte, ROS 2 to PLC"/>
+          <Text TextId="TN_RAW_64_IN" Value="64 bytes IN"/>
+          <Text TextId="TI_RAW_64_IN" Value="64 x raw byte, ROS 2 to PLC"/>
+          <Text TextId="TN_BOOL_8_OUT" Value="8 BOOL OUT"/>
+          <Text TextId="TI_BOOL_8_OUT" Value="8 x BOOL, PLC to ROS 2"/>
+          <Text TextId="TN_BOOL_16_OUT" Value="16 BOOL OUT"/>
+          <Text TextId="TI_BOOL_16_OUT" Value="16 x BOOL, PLC to ROS 2"/>
+          <Text TextId="TN_BOOL_32_OUT" Value="32 BOOL OUT"/>
+          <Text TextId="TI_BOOL_32_OUT" Value="32 x BOOL, PLC to ROS 2"/>
+          <Text TextId="TN_INT_1_OUT" Value="1 INT OUT"/>
+          <Text TextId="TI_INT_1_OUT" Value="1 x INT, PLC to ROS 2"/>
+          <Text TextId="TN_INT_2_OUT" Value="2 INT OUT"/>
+          <Text TextId="TI_INT_2_OUT" Value="2 x INT, PLC to ROS 2"/>
+          <Text TextId="TN_INT_4_OUT" Value="4 INT OUT"/>
+          <Text TextId="TI_INT_4_OUT" Value="4 x INT, PLC to ROS 2"/>
+          <Text TextId="TN_INT_8_OUT" Value="8 INT OUT"/>
+          <Text TextId="TI_INT_8_OUT" Value="8 x INT, PLC to ROS 2"/>
+          <Text TextId="TN_DINT_1_OUT" Value="1 DINT OUT"/>
+          <Text TextId="TI_DINT_1_OUT" Value="1 x DINT, PLC to ROS 2"/>
+          <Text TextId="TN_DINT_2_OUT" Value="2 DINT OUT"/>
+          <Text TextId="TI_DINT_2_OUT" Value="2 x DINT, PLC to ROS 2"/>
+          <Text TextId="TN_DINT_4_OUT" Value="4 DINT OUT"/>
+          <Text TextId="TI_DINT_4_OUT" Value="4 x DINT, PLC to ROS 2"/>
+          <Text TextId="TN_DINT_8_OUT" Value="8 DINT OUT"/>
+          <Text TextId="TI_DINT_8_OUT" Value="8 x DINT, PLC to ROS 2"/>
+          <Text TextId="TN_REAL_1_OUT" Value="1 REAL OUT"/>
+          <Text TextId="TI_REAL_1_OUT" Value="1 x REAL, PLC to ROS 2"/>
+          <Text TextId="TN_REAL_2_OUT" Value="2 REAL OUT"/>
+          <Text TextId="TI_REAL_2_OUT" Value="2 x REAL, PLC to ROS 2"/>
+          <Text TextId="TN_REAL_4_OUT" Value="4 REAL OUT"/>
+          <Text TextId="TI_REAL_4_OUT" Value="4 x REAL, PLC to ROS 2"/>
+          <Text TextId="TN_REAL_8_OUT" Value="8 REAL OUT"/>
+          <Text TextId="TI_REAL_8_OUT" Value="8 x REAL, PLC to ROS 2"/>
+          <Text TextId="TN_REAL_16_OUT" Value="16 REAL OUT"/>
+          <Text TextId="TI_REAL_16_OUT" Value="16 x REAL, PLC to ROS 2"/>
+          <Text TextId="TN_RAW_8_OUT" Value="8 bytes OUT"/>
+          <Text TextId="TI_RAW_8_OUT" Value="8 x raw byte, PLC to ROS 2"/>
+          <Text TextId="TN_RAW_16_OUT" Value="16 bytes OUT"/>
+          <Text TextId="TI_RAW_16_OUT" Value="16 x raw byte, PLC to ROS 2"/>
+          <Text TextId="TN_RAW_32_OUT" Value="32 bytes OUT"/>
+          <Text TextId="TI_RAW_32_OUT" Value="32 x raw byte, PLC to ROS 2"/>
+          <Text TextId="TN_RAW_64_OUT" Value="64 bytes OUT"/>
+          <Text TextId="TI_RAW_64_OUT" Value="64 x raw byte, PLC to ROS 2"/>
+          <Text TextId="T_DEVICE" Value="ROS 2 node as a modular PROFINET IO device. Development identity, not certified by PI."/>
+          <Text TextId="T_DAP" Value="ROS 2 device"/>
+          <Text TextId="T_DAP_INFO" Value="Modular ROS 2 device, up to 31 data modules"/>
+          <Text TextId="T_IF" Value="X1"/>
+          <Text TextId="T_PORT" Value="X1 P1"/>
+          <Text TextId="T_CAT_IN" Value="Data to PLC (IN)"/>
+          <Text TextId="T_CAT_OUT" Value="Data from PLC (OUT)"/>
+          <Text TextId="T_CAT_STATUS" Value="Status"/>
+        </PrimaryLanguage>
+      </ExternalTextList>
+    </ApplicationProcess>
+  </ProfileBody>
+</ISO15745Profile>

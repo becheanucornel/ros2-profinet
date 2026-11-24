@@ -1,0 +1,23 @@
+[Unit]
+Description=PROFINET IO device for ROS 2
+After=network.target
+# Keep trying, for example until the network interface appears.
+StartLimitIntervalSec=0
+
+[Service]
+# Created with: profinet_check --service-env config_profinet.xml
+EnvironmentFile=/etc/default/profinet_device
+ExecStart=@CMAKE_INSTALL_FULL_LIBDIR@/profinet_device/profinet_device -V ${PROFINET_VENDOR_ID} -D ${PROFINET_DEVICE_ID} -i ${PROFINET_INTERFACE} -n ${PROFINET_STATION_NAME}
+# The group whose members may run the ROS 2 node.
+Group=profinet
+RuntimeDirectory=profinet_device
+StateDirectory=profinet_device
+Restart=on-failure
+RestartSec=2
+# Wrong settings do not get better.
+RestartPreventExitStatus=2
+LimitRTPRIO=99
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target
