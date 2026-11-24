@@ -35,7 +35,7 @@ own, once, so that its machines are devices of that organisation.
 
 ## Supported distributions
 
-Each ROS 2 distribution has its own branch:
+This branch is for **ROS 2 Jazzy**. Each distribution has its own:
 
 | ROS 2 | Ubuntu | Branch |
 |---|---|---|
@@ -71,7 +71,7 @@ project does not depend on the distribution.
 
 ### Requirements
 
-- A ROS 2 distribution and Ubuntu version from the table above
+- Ubuntu 24.04 with ROS 2 Jazzy
 - `sudo apt install build-essential cmake git python3-colcon-common-extensions`
 - A network port that is used only for PROFINET
 - TIA Portal, or another engineering tool for GSDML V2.4
@@ -81,7 +81,7 @@ project does not depend on the distribution.
 
 ```sh
 cd ~/ros2_ws/src
-git clone -b <branch> https://github.com/becheanucornel/ros2-profinet.git
+git clone -b jazzy https://github.com/becheanucornel/ros2-profinet.git
 
 # PROFINET service, once per machine
 cd ros2-profinet/profinet_device
