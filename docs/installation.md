@@ -1,7 +1,7 @@
 # Installation
 
-You need a supported [ROS 2 distribution](../README.md#supported-distributions), a network port
-that is used only for PROFINET, because the PLC sets its IP address, and:
+You need Ubuntu 26.04 with ROS 2 Lyrical, a network port that is used only for
+PROFINET, because the PLC sets its IP address, and:
 
 ```sh
 sudo apt install build-essential cmake git python3-colcon-common-extensions
@@ -12,17 +12,17 @@ There are two parts. The **PROFINET service** is installed once per machine. The
 
 ## 1. Get the repository
 
-Into the `src` folder of your ROS 2 workspace, with the branch of your distribution:
+Into the `src` folder of your ROS 2 workspace:
 
 ```sh
 cd ~/ros2_ws/src
-git clone -b <branch> https://github.com/becheanucornel/ros2-profinet.git
+git clone -b lyrical https://github.com/becheanucornel/ros2-profinet.git
 ```
 
 If your project is a Git repository itself, add it as a submodule instead:
 
 ```sh
-git submodule add -b <branch> https://github.com/becheanucornel/ros2-profinet.git src/ros2-profinet
+git submodule add -b lyrical https://github.com/becheanucornel/ros2-profinet.git src/ros2-profinet
 ```
 
 ## 2. Install the PROFINET service
